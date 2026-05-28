@@ -143,7 +143,11 @@ curl -X POST http://localhost:8080/convert-and-store \
    git push clever main
    ```
 
-Chromium est déjà disponible sur les instances Clever Cloud, aucune configuration supplémentaire n'est nécessaire pour Puppeteer.
+### Puppeteer / Chromium
+
+Puppeteer télécharge sa propre version de Chromium pendant `npm install`. Pour que ce binaire soit conservé d'un déploiement à l'autre, le cache est configuré via `.puppeteerrc.cjs` pour pointer sur `./.cache/puppeteer` (à l'intérieur du dossier de l'app). Un script `postinstall` force le téléchargement au cas où il aurait été sauté.
+
+Aucune env var supplémentaire à définir côté Clever Cloud pour Puppeteer.
 
 ## Notes
 
